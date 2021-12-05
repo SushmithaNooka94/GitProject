@@ -1,0 +1,148 @@
+#%RAML 1.0
+title: calculator-api
+version: 1
+description: " this api is used to perform some math operation"
+
+/addition:
+  get:
+    queryParameters:
+      number1:
+        example: 10
+        required: true
+        type: integer 
+      number2:
+        required: true
+        type: number
+        example: 30
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/addition-response.json
+      400:
+        body:
+          application/json:
+            example:
+              {
+                "message" : "Bad Request"
+              }
+      401:
+        body:
+          application/json:
+            example:
+              {
+                "message" : " Un Auth "
+              }
+      404:
+        body:
+          application/json:
+            example:
+              {
+                "message" : " Not Found "
+              }
+      500:
+        body:
+          application/json:
+            example:
+              {
+                "message" : " internl server error"
+              }
+      504:
+        body:
+          application/json:
+            example:
+              {
+                "message" : " Time out"
+              }
+  
+/sub:
+  post:
+    queryParameters:
+      num1:
+        type: integer
+        required: true
+        
+      num2:
+        type: number
+        required: true
+        example: 20
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/sub-response.json
+              
+      500:
+        description: |
+           internal server error
+
+/multi:
+  patch:
+    queryParameters:
+      number1:
+        type: integer
+        example: 20
+      number2:
+        required: true
+        type: integer
+        example: 5
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/multi-response.json
+              
+      500:
+        body:
+          application/json:
+            example: {
+              "message" : " internal server error"
+            }
+      400:
+        description: |
+           bad request
+
+/div:
+  put:
+    queryParameters:
+      number1:
+        type: integer
+        example: 20
+      number2:
+        required: true
+        type: integer
+        example: 5
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/div-response.json
+              
+      500:
+        body:
+          application/json:
+            example: {
+              "message" : " internal server error"
+            }
+      400:
+        description: |
+           bad request           
+          
+        
+        
+          
+    
+          
+
+          
+
+      
+      
+      
+      
+          
+
+          
+      
+
+
